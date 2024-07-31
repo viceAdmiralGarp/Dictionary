@@ -3,11 +3,7 @@ package com.mmdev.ooplesson.runner;
 import com.mmdev.ooplesson.service.WordService;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Runner {
 	public static void main(String[] args) throws IOException {
@@ -15,6 +11,43 @@ public class Runner {
 		wordService.choseLanguage();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //		Path path = Path.of("resources", "res.txt");
 //		List<StringBuilder> list = new ArrayList<>();
 //		try (Scanner scanner = new Scanner(path)) {

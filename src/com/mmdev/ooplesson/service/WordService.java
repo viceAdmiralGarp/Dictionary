@@ -19,6 +19,7 @@ public final class WordService {
 		System.out.println("If you want to translate word from Russian into English press 0, \n" +
 						   "from English into Russian press 1 ");
 		int number = scanner.nextInt();
+		scanner.nextLine();
 		if (number == 0) {
 			fromRussianIntoEnglish();
 		} else if (number == 1) {
@@ -27,32 +28,31 @@ public final class WordService {
 	}
 
 	private void fromEnglishIntoRussian() throws IOException {
-		Map<String, String> stringMap = wordMapper.mapToWord();
-		for (Map.Entry<String, String> englishWord : stringMap.entrySet()) {
+		Map<String, String> sortedMap = wordMapper.initSortedMap();
+		for (Map.Entry<String, String> englishWord : sortedMap.entrySet()) {
 			System.out.println(englishWord.getKey());
-			String inputWord = scanner.next();
-			scanner.nextLine();
-			if (inputWord.equals(englishWord.getValue())) {
-				System.out.println("correct answer");
-			} else {
-				System.err.println("wrong answer: correct is " + englishWord.getValue());
-			}
+			String inputWord = scanner.nextLine();
+			checkWord(inputWord,englishWord.getValue());
 		}
 	}
 
 	private void fromRussianIntoEnglish() throws IOException {
-		Map<String, String> stringMap = wordMapper.mapToWord();
-		for (Map.Entry<String, String> russianWord : stringMap.entrySet()) {
+		Map<String, String> sortedMap = wordMapper.initSortedMap();
+		for (Map.Entry<String, String> russianWord : sortedMap.entrySet()) {
 			System.out.println(russianWord.getValue());
-			String inputWord = scanner.next();
-			scanner.nextLine();
-			if (inputWord.equals(russianWord.getKey())) {
-				System.out.println("correct answer");
-			} else {
-				System.err.println("wrong answer: correct is " + russianWord.getKey());
-			}
+			String inputWord = scanner.nextLine();
+			checkWord(inputWord,russianWord.getKey());
 		}
 	}
+
+	private void checkWord(String inputWord, String wordFromMap) {
+		if (inputWord.equals(wordFromMap)) {
+			System.out.println("correct answer");
+		} else {
+			System.err.println("wrong answer: correct is " + wordFromMap);
+		}
+	}
+
 
 	public static WordService getInstance() {
 		return INSTANCE;

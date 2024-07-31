@@ -12,7 +12,6 @@ public final class WordMapper {
 	private final static int START_OF_THE_STRING = 0;
 	private final static Path PATH = Path.of("resources", "words.txt");
 	private final BufferedReader reader = new BufferedReader(new FileReader(PATH.toFile()));
-	private final Random random = new Random();
 	public static WordMapper INSTANCE;
 
 	static {
@@ -30,26 +29,32 @@ public final class WordMapper {
 		Map<String, String> words = new TreeMap<>();
 		while (reader.read() != -1) {
 			StringBuilder line = new StringBuilder(reader.readLine());
-			int indexOfSpace = line.indexOf(" ");
+			int indexOfSpace = line.indexOf("=");
 			if(indexOfSpace == -1){
 				break;
 			}
 			words.put(line.substring(START_OF_THE_STRING, indexOfSpace)
 					, line.substring(indexOfSpace + 1, line.length()));
 		}
+		return words;
+	}
 
-		List<String> keys = new ArrayList<>(words.keySet());
+	public Map<String,String>shuffleMap(Map<String,String> map){
+		List<String> keys = new ArrayList<>(map.keySet());
 		Collections.shuffle(keys);
 		Comparator<String> randomComparator = Comparator.comparingInt(keys::indexOf);
 		Map<String, String> sortedMap = new TreeMap<>(randomComparator);
 		for (String key : keys) {
-			sortedMap.put(key, words.get(key));
+			sortedMap.put(key, map.get(key));
 		}
 		return sortedMap;
+	}
+
+	public Map<String,String>initSortedMap() throws IOException {
+		return shuffleMap(mapToWord());
 	}
 
 	public static WordMapper getInstance() {
 		return INSTANCE;
 	}
-
 }
