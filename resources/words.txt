@@ -3,6 +3,11 @@
  enthusiasm=энтузиазм
  bitterly=горько
  shy=застенчивый
+ acquaintance=знакомый
+ generous=щедрый
+ enthusiasm=энтузиазм
+ bitterly=горько
+ shy=застенчивый
  outstanding=выдающийся
  dangerous=опасно
  upset=расстроен
@@ -56,6 +61,5 @@
  react to=реагировать
  contest=соревнование
  healthy=здоровый
-
 
 

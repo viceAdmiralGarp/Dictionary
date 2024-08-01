@@ -26,7 +26,7 @@ public final class WordMapper {
 	}
 
 	public Map<String, String> mapToWord() throws IOException {
-		Map<String, String> words = new TreeMap<>();
+		Map<String, String> words = new HashMap<>();
 		while (reader.read() != -1) {
 			StringBuilder line = new StringBuilder(reader.readLine());
 			int indexOfSpace = line.indexOf("=");
@@ -50,7 +50,7 @@ public final class WordMapper {
 		return sortedMap;
 	}
 
-	public Map<String,String>initSortedMap() throws IOException {
+	public Map<String,String> initRandomSortedMap() throws IOException {
 		return shuffleMap(mapToWord());
 	}
 
