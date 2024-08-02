@@ -61,5 +61,39 @@
  react to=реагировать
  contest=соревнование
  healthy=здоровый
+ guess=угадать
+ put on=одевать
+ coat=пальто
+ hungry=голоден
+ angry=злой
+ indefinite=неопределённый
+ as you know=как ты знаешь
+ as i remember=как я помню
+ as i guess=как я догадываюсь
+ sooner or later=рано или поздно
+ even=даже
+ between=между
+ few=мало
+ a few=несколько
+ each of you=каждый из вас
+ government=правительстно
+ authorities=власти
+ law=закон
+ others=другие
+ trust=доверять
+ research=исследовать
+ scientific=научный
+ by myself/on my own=самостоятельно
+ towards=по направлению
+ through=через
+ look for=искать
+ sense of humor=чувство юмора
+ include=включать что-то в себя
+ including=включая в себя
+ machine=машина
+ economic=экономика (страны)
+ economical=сэкономить
+
+
 
 
