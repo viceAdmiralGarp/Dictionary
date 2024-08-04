@@ -76,7 +76,7 @@
  few=мало
  a few=несколько
  each of you=каждый из вас
- government=правительстно
+ government=правительство
  authorities=власти
  law=закон
  others=другие
@@ -93,7 +93,44 @@
  machine=машина
  economic=экономика (страны)
  economical=сэкономить
-
-
-
-
+ interact=взаимодействовать
+ rudimentary=элементарный
+ brief=краткое
+ thrust=толкать
+ represent=представляет
+ retrieve=извлекать
+ unit=еденица
+ generally=в целом
+ consequence=последствие
+ compute=вычислять
+ evaluate=оценивать
+ for instance=например
+ crucial=решающий
+ especially=особенно
+ society=общество
+ won't take place=не произойдёт
+ fee=платёж
+ taxes=налоги
+ costs=расходы
+ cover=покрыть
+ income=доход
+ directly=прямо
+ agreement=соглашение
+ own=владеть
+ owner=собственник
+ prove=доказывать
+ analysis=анализ
+ elections=выборы
+ while=в то время как
+ community=сообщество
+ badminton=бадминтон
+ try on=примерять
+ look up=посмотреть(в словаре)
+ invitation=приглашение
+ below=ниже
+ above=выше
+ timetable=расписание
+ schedule=график
+ insurance=страховка
+ spelling mistake=орфографическая ошибка
+ advertisement=реклама

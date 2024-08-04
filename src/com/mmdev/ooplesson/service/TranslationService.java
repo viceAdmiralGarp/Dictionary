@@ -68,7 +68,6 @@ public final class TranslationService {
 		}
 	}
 
-	
 	private boolean isCorrectWord(String inputWord, String wordFromMap) {
 		if (inputWord.equals(wordFromMap)) {
 			System.out.println("correct answer");
