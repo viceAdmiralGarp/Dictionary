@@ -11,6 +11,7 @@ public final class WordMapper {
 
 	private final static int START_OF_THE_STRING = 0;
 	private final static Path PATH = Path.of("resources", "words.txt");
+	public static final String SEPARATOR = "=";
 	private final BufferedReader reader = new BufferedReader(new FileReader(PATH.toFile()));
 	public static WordMapper INSTANCE;
 
@@ -25,12 +26,12 @@ public final class WordMapper {
 	private WordMapper() throws FileNotFoundException {
 	}
 
-	public Map<String, String> mapToWord() throws IOException {
+	public Map<String, String> parseLinesToMap() throws IOException {
 		Map<String, String> words = new HashMap<>();
 		while (reader.read() != -1) {
 			StringBuilder line = new StringBuilder(reader.readLine());
-			int indexOfSpace = line.indexOf("=");
-			if(indexOfSpace == -1){
+			int indexOfSpace = line.indexOf(SEPARATOR);
+			if (indexOfSpace == -1) {
 				break;
 			}
 			words.put(line.substring(START_OF_THE_STRING, indexOfSpace)
@@ -39,7 +40,7 @@ public final class WordMapper {
 		return words;
 	}
 
-	public Map<String,String>shuffleMap(Map<String,String> map){
+	public Map<String, String> shuffleMap(Map<String, String> map) {
 		List<String> keys = new ArrayList<>(map.keySet());
 		Collections.shuffle(keys);
 		Comparator<String> randomComparator = Comparator.comparingInt(keys::indexOf);
@@ -50,8 +51,8 @@ public final class WordMapper {
 		return sortedMap;
 	}
 
-	public Map<String,String> initRandomSortedMap() throws IOException {
-		return shuffleMap(mapToWord());
+	public Map<String, String> createShuffledMap() throws IOException {
+		return shuffleMap(parseLinesToMap());
 	}
 
 	public static WordMapper getInstance() {

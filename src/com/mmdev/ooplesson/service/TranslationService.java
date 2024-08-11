@@ -1,6 +1,8 @@
 package com.mmdev.ooplesson.service;
 
+import com.mmdev.ooplesson.language.Language;
 import com.mmdev.ooplesson.mapper.WordMapper;
+import com.mmdev.ooplesson.util.MapUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,27 +23,30 @@ public final class TranslationService {
 						   "from English into Russian press 1 ");
 		int number = scanner.nextInt();
 		scanner.nextLine();
-		if (number == 0) {
+
+		Language language = Language.fromNumber(number);
+
+		if (language == Language.RUSSIAN) {
 			fromRuIntoEng();
-		} else if (number == 1) {
+		} else if (language == Language.ENGLISH) {
 			fromEngIntoRu();
 		}
 	}
 	
 	private void fromEngIntoRu() throws IOException {
-		Map<String, String> randomSortedWords = wordMapper.initRandomSortedMap();
-		Map<String, String> mistakes = checkAndHandleMistakes(randomSortedWords);
+		Map<String, String> randomSortedWords = wordMapper.createShuffledMap();
+		Map<String, String> mistakes = identifyMistakes(randomSortedWords);
 		handleWrongWords(mistakes);
 	}
 
 	private void fromRuIntoEng() throws IOException {
-		Map<String, String> randomSortedWords = wordMapper.initRandomSortedMap();
-		Map<String, String> words = swapKeysAndValues(randomSortedWords);
-		Map<String, String> mistakes = checkAndHandleMistakes(words);
+		Map<String, String> randomSortedWords = wordMapper.createShuffledMap();
+		Map<String, String> words = MapUtils.swapKeysAndValues(randomSortedWords);
+		Map<String, String> mistakes = identifyMistakes(words);
 		handleWrongWords(mistakes);
 	}
 
-	public Map<String, String> checkAndHandleMistakes(Map<String, String> randomSortedWords) {
+	public Map<String, String> identifyMistakes(Map<String, String> randomSortedWords) {
 		Map<String, String> mistakes = new HashMap<>();
 		for (Map.Entry<String, String> wordEntry : randomSortedWords.entrySet()) {
 			System.out.println(wordEntry.getKey()); //display an English word (this word we need to translate into ru)
@@ -58,7 +63,7 @@ public final class TranslationService {
 		if (!wrongWords.isEmpty()) {
 			int number = inputNumber();
 			if (number == 0) {
-				Map<String, String> mistakes = checkAndHandleMistakes(wrongWords);
+				Map<String, String> mistakes = identifyMistakes(wrongWords);
 				if (!mistakes.isEmpty()) {
 					handleWrongWords(mistakes);
 				}else {
@@ -85,13 +90,6 @@ public final class TranslationService {
 		return number;
 	}
 
-	public static Map<String, String> swapKeysAndValues(Map<String, String> originalMap) {
-		Map<String, String> swappedMap = new HashMap<>();
-		for (Map.Entry<String, String> entry : originalMap.entrySet()) {
-			swappedMap.put(entry.getValue(), entry.getKey());
-		}
-		return swappedMap;
-	}
 	public static TranslationService getInstance() {
 		return INSTANCE;
 	}
