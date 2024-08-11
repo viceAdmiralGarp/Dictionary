@@ -5,13 +5,10 @@ public enum Language {
 	RUSSIAN;
 
 	public static Language fromNumber(int number) {
-		switch (number) {
-			case 0:
-				return RUSSIAN;
-			case 1:
-				return ENGLISH;
-			default:
-				throw new IllegalArgumentException("Invalid number for Language: " + number);
-		}
+		return switch (number) {
+			case 0 -> RUSSIAN;
+			case 1 -> ENGLISH;
+			default -> throw new IllegalArgumentException("Invalid number for Language: " + number);
+		};
 	}
 }
