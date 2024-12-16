@@ -1,6 +1,6 @@
 package com.mmdev.ooplesson.util;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MapUtils {
@@ -10,7 +10,7 @@ public class MapUtils {
 	}
 
 	public static Map<String, String> swapKeysAndValues(Map<String, String> originalMap) {
-		Map<String, String> swappedMap = new HashMap<>();
+		Map<String, String> swappedMap = new LinkedHashMap<>();
 		for (Map.Entry<String, String> entry : originalMap.entrySet()) {
 			swappedMap.put(entry.getValue(), entry.getKey());
 		}
